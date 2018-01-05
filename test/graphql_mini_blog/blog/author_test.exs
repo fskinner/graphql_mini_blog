@@ -10,9 +10,16 @@ defmodule GraphqlMiniBlog.AuthorTest do
     assert changeset.valid?
   end
 
-  test "changeset, email too short " do
+  test "changeset, email empty" do
     changeset = Author.changeset(
-      %Author{}, Map.put(@valid_attrs, :email, "")
+      %Author{}, Map.put(@valid_attrs, :email, nil)
+    )
+    refute changeset.valid?
+  end
+
+  test "changeset, email too short" do
+    changeset = Author.changeset(
+      %Author{}, Map.put(@valid_attrs, :email, "a@a")
     )
     refute changeset.valid?
   end
@@ -24,9 +31,23 @@ defmodule GraphqlMiniBlog.AuthorTest do
     refute changeset.valid?
   end
 
+  test "changeset, first_name empty" do
+    changeset = Author.changeset(
+      %Author{}, Map.put(@valid_attrs, :first_name, nil)
+    )
+    refute changeset.valid?
+  end
+
   test "changeset, first_name too short" do
     changeset = Author.changeset(
       %Author{}, Map.put(@valid_attrs, :first_name, "a")
+    )
+    refute changeset.valid?
+  end
+
+  test "changeset, last_name empty" do
+    changeset = Author.changeset(
+      %Author{}, Map.put(@valid_attrs, :last_name, nil)
     )
     refute changeset.valid?
   end

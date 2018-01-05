@@ -6,8 +6,8 @@ defmodule GraphqlMiniBlog.BlogTest do
   describe "authors" do
     alias GraphqlMiniBlog.Blog.Author
 
-    @valid_attrs %{email: "some email", first_name: "some first_name", last_name: "some last_name"}
-    @update_attrs %{email: "some updated email", first_name: "some updated first_name", last_name: "some updated last_name"}
+    @valid_attrs %{email: "a@a.c", first_name: "some first_name", last_name: "some last_name"}
+    @update_attrs %{email: "b@b.c", first_name: "some updated first_name", last_name: "some updated last_name"}
     @invalid_attrs %{email: nil, first_name: nil, last_name: nil}
 
     def author_fixture(attrs \\ %{}) do
@@ -31,7 +31,7 @@ defmodule GraphqlMiniBlog.BlogTest do
 
     test "create_author/1 with valid data creates a author" do
       assert {:ok, %Author{} = author} = Blog.create_author(@valid_attrs)
-      assert author.email == "some email"
+      assert author.email == "a@a.c"
       assert author.first_name == "some first_name"
       assert author.last_name == "some last_name"
     end
@@ -44,7 +44,7 @@ defmodule GraphqlMiniBlog.BlogTest do
       author = author_fixture()
       assert {:ok, author} = Blog.update_author(author, @update_attrs)
       assert %Author{} = author
-      assert author.email == "some updated email"
+      assert author.email == "b@b.c"
       assert author.first_name == "some updated first_name"
       assert author.last_name == "some updated last_name"
     end

@@ -4,8 +4,8 @@ defmodule GraphqlMiniBlogWeb.AuthorControllerTest do
   alias GraphqlMiniBlog.Blog
   alias GraphqlMiniBlog.Blog.Author
 
-  @create_attrs %{email: "some email", first_name: "some first_name", last_name: "some last_name"}
-  @update_attrs %{email: "some updated email", first_name: "some updated first_name", last_name: "some updated last_name"}
+  @create_attrs %{email: "a@a.c", first_name: "some first_name", last_name: "some last_name"}
+  @update_attrs %{email: "b@b.c", first_name: "some updated first_name", last_name: "some updated last_name"}
   @invalid_attrs %{email: nil, first_name: nil, last_name: nil}
 
   def fixture(:author) do
@@ -32,7 +32,7 @@ defmodule GraphqlMiniBlogWeb.AuthorControllerTest do
       conn = get conn, author_path(conn, :show, id)
       assert json_response(conn, 200)["data"] == %{
         "id" => id,
-        "email" => "some email",
+        "email" => "a@a.c",
         "first_name" => "some first_name",
         "last_name" => "some last_name"}
     end
@@ -53,7 +53,7 @@ defmodule GraphqlMiniBlogWeb.AuthorControllerTest do
       conn = get conn, author_path(conn, :show, id)
       assert json_response(conn, 200)["data"] == %{
         "id" => id,
-        "email" => "some updated email",
+        "email" => "b@b.c",
         "first_name" => "some updated first_name",
         "last_name" => "some updated last_name"}
     end

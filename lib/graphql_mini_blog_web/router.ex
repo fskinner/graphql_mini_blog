@@ -9,5 +9,6 @@ defmodule GraphqlMiniBlogWeb.Router do
     pipe_through :api
 
     resources "/authors", AuthorController, except: [:new, :edit]
+    resources "/posts", PostController, except: [:new, :edit]
   end
 end

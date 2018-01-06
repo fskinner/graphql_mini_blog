@@ -139,6 +139,7 @@ defmodule GraphqlMiniBlog.Blog do
 
   """
   def get_post!(id), do: Repo.get!(Post, id)
+  def get_post(id), do: Repo.get(Post, id)
 
   @doc """
   Creates a post.

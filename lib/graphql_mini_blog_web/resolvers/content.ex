@@ -9,4 +9,11 @@ defmodule GraphqlMiniBlogWeb.Resolvers.Content do
     {:ok, Blog.list_authors()}
   end
 
+  def get_post(%{id: id}, _info) do
+    {:ok, Blog.get_post(id)}
+  end
+
+  def get_author(%{id: id}, _info) do
+    {:ok, Blog.get_author(id)}
+  end
 end

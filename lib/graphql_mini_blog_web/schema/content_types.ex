@@ -22,7 +22,7 @@ defmodule GraphqlMiniBlogWeb.Schema.ContentTypes do
     field :about, :string
     field :author, :author do
       resolve fn post, _, _ ->
-        {:ok, Blog.get_author(post.author.id)}
+        {:ok, Blog.get_author(post.author_id)}
         # {:ok, Resolvers.Content.get_author(post.author.id)}
       end
     end

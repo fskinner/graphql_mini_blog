@@ -2,12 +2,15 @@ defmodule GraphqlMiniBlog.Blog.Author do
   use Ecto.Schema
   import Ecto.Changeset
   alias GraphqlMiniBlog.Blog.Author
+  alias GraphqlMiniBlog.Blog.Post
 
 
   schema "authors" do
     field :email, :string
     field :first_name, :string
     field :last_name, :string
+
+    has_many :posts, Post
 
     timestamps()
   end

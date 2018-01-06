@@ -28,7 +28,4 @@ defmodule GraphqlMiniBlogWeb.Schema do
       resolve &Resolvers.Content.get_author/2
     end
   end
-
-  
-
 end

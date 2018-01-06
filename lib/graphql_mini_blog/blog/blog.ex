@@ -36,7 +36,7 @@ defmodule GraphqlMiniBlog.Blog do
 
   """
   def get_author!(id), do: Repo.get!(Author, id)
-
+  def get_author(id), do: Repo.get(Author, id)
   @doc """
   Creates a author.
 
@@ -115,6 +115,13 @@ defmodule GraphqlMiniBlog.Blog do
   """
   def list_posts do
     Repo.all(Post)
+  end
+
+  def list_posts(id) do
+    query = from p in Post,
+      where: p.author_id == ^id
+
+    Repo.all(query)
   end
 
   @doc """

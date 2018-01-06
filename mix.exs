@@ -40,7 +40,10 @@ defmodule GraphqlMiniBlog.Mixfile do
       {:gettext, "~> 0.11"},
       {:cowboy, "~> 1.0"},
       {:ex_machina, "~> 2.1", only: :test},
-      {:cors_plug, "~> 1.2"}
+      {:cors_plug, "~> 1.2"},
+      {:absinthe, "~> 1.4", override: true},
+      {:absinthe_plug, "~> 1.4"},
+      {:poison, "~> 3.0"}
     ]
   end
 

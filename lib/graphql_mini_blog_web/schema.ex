@@ -28,6 +28,12 @@ defmodule GraphqlMiniBlogWeb.Schema do
     end
   end
 
+  input_object :update_author_params do
+    field :email, non_null(:string)
+    field :first_name, non_null(:string)
+    field :last_name, non_null(:string)
+  end
+
   mutation do
     field :create_author, :author do
       arg :email, non_null(:string)
@@ -35,6 +41,13 @@ defmodule GraphqlMiniBlogWeb.Schema do
       arg :last_name, non_null(:string)
   
       resolve &Resolvers.Mutations.create_author/3
+    end
+
+    field :update_author, :author do
+      arg :id, non_null(:integer)
+      arg :author, :update_author_params
+   
+      resolve &Resolvers.Mutations.update_author/2
     end
   end
 end

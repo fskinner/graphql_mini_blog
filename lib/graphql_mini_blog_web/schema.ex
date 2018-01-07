@@ -35,6 +35,7 @@ defmodule GraphqlMiniBlogWeb.Schema do
   end
 
   mutation do
+    @desc "Create author with email, fist name and last name"
     field :create_author, :author do
       arg :email, non_null(:string)
       arg :first_name, non_null(:string)
@@ -43,6 +44,7 @@ defmodule GraphqlMiniBlogWeb.Schema do
       resolve &Resolvers.Mutations.create_author/3
     end
 
+    @desc "Update author with id, email, fist name and last name"
     field :update_author, :author do
       arg :id, non_null(:integer)
       arg :author, :update_author_params
@@ -50,6 +52,7 @@ defmodule GraphqlMiniBlogWeb.Schema do
       resolve &Resolvers.Mutations.update_author/2
     end
 
+    @desc "Delete author with id"
     field :delete_author, :author do
       arg :id, non_null(:integer)
    

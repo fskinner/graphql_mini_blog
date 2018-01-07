@@ -49,5 +49,11 @@ defmodule GraphqlMiniBlogWeb.Schema do
    
       resolve &Resolvers.Mutations.update_author/2
     end
+
+    field :delete_author, :author do
+      arg :id, non_null(:integer)
+   
+      resolve &Resolvers.Mutations.delete_author/2
+    end
   end
 end

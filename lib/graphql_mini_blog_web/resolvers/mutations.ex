@@ -3,7 +3,7 @@ defmodule GraphqlMiniBlogWeb.Resolvers.Mutations do
   alias GraphqlMiniBlog.Repo
 
   alias GraphqlMiniBlog.Blog.Author
-  
+
   alias GraphqlMiniBlog.Blog
 
   def create_author(_root, args, _info) do
@@ -19,5 +19,10 @@ defmodule GraphqlMiniBlogWeb.Resolvers.Mutations do
     Repo.get!(Author, id)
     |> Author.changeset(author_params)
     |> Repo.update
+  end
+
+  def delete_author(%{id: id}, _info) do
+    author = Repo.get!(Author, id)
+    Repo.delete(author)
   end
 end

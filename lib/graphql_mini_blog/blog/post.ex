@@ -5,7 +5,6 @@ defmodule GraphqlMiniBlog.Blog.Post do
   alias GraphqlMiniBlog.Blog.Post
   alias GraphqlMiniBlog.Blog.Author
 
-
   schema "posts" do
     field :about, :string
     field :description, :string

@@ -24,7 +24,7 @@ defmodule GraphqlMiniBlogWeb.Schema do
     @desc "Get author by id"
     field :author, type: :author do
       arg :id, non_null(:id)
-      resolve &Resolvers.Content.get_author/2
+      resolve &Resolvers.Content.get_author/1
     end
   end
 

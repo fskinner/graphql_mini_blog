@@ -1,6 +1,7 @@
 defmodule GraphqlMiniBlogWeb.Schema.ContentTypes do
   use Absinthe.Schema.Notation
   alias GraphqlMiniBlog.Blog
+  alias GraphqlMiniBlogWeb.Resolvers
 
   object :author do
     field :id, :id
@@ -9,8 +10,7 @@ defmodule GraphqlMiniBlogWeb.Schema.ContentTypes do
     field :email, :string
     field :posts, list_of(:post) do
       resolve fn author, _, _ ->
-        {:ok, Blog.list_posts(author.id)}
-        # {:ok, Resolvers.Content.find_posts(author.id)}
+        Resolvers.Content.list_posts(author.id)
       end
     end
   end
@@ -22,10 +22,8 @@ defmodule GraphqlMiniBlogWeb.Schema.ContentTypes do
     field :about, :string
     field :author, :author do
       resolve fn post, _, _ ->
-        {:ok, Blog.get_author(post.author_id)}
-        # {:ok, Resolvers.Content.get_author(post.author.id)}
+        Resolvers.Content.get_author(%{id: post.author_id})
       end
     end
-    field :votes, :integer
   end
 end

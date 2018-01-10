@@ -11,9 +11,11 @@ defmodule GraphqlMiniBlogWeb.AuthorView do
   end
 
   def render("author.json", %{author: author}) do
-    %{id: author.id,
+    %{
+      id: author.id,
       email: author.email,
       first_name: author.first_name,
-      last_name: author.last_name}
+      last_name: author.last_name
+    }
   end
 end

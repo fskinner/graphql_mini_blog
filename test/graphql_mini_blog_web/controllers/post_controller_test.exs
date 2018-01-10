@@ -34,7 +34,9 @@ defmodule GraphqlMiniBlogWeb.PostControllerTest do
         "id" => id,
         "about" => "some about",
         "description" => "some description",
-        "title" => "some title"}
+        "title" => "some title",
+        "author_id" => nil,
+      }
     end
 
     test "renders errors when data is invalid", %{conn: conn} do
@@ -55,7 +57,9 @@ defmodule GraphqlMiniBlogWeb.PostControllerTest do
         "id" => id,
         "about" => "some updated about",
         "description" => "some updated description",
-        "title" => "some updated title"}
+        "title" => "some updated title",
+        "author_id" => nil,
+      }
     end
 
     test "renders errors when data is invalid", %{conn: conn, post: post} do

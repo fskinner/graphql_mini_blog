@@ -36,7 +36,23 @@ defmodule GraphqlMiniBlog.Blog do
 
   """
   def get_author!(id), do: Repo.get!(Author, id)
+
+  @doc """
+  Gets a single author.
+
+  Returns nil if the Author does not exist.
+
+  ## Examples
+
+      iex> get_author(123)
+      %Author{}
+
+      iex> get_author(456)
+      nil
+
+  """
   def get_author(id), do: Repo.get(Author, id)
+  
   @doc """
   Creates a author.
 
@@ -117,6 +133,15 @@ defmodule GraphqlMiniBlog.Blog do
     Repo.all(Post)
   end
 
+  @doc """
+  Returns the list of posts given an author id.
+
+  ## Examples
+
+      iex> list_posts(1)
+      [%Post{}, ...]
+
+  """
   def list_posts(id) do
     query = from p in Post,
       where: p.author_id == ^id
@@ -131,6 +156,22 @@ defmodule GraphqlMiniBlog.Blog do
 
   ## Examples
 
+      iex> get_post(123)
+      %Post{}
+
+      iex> get_post(456)
+      nil
+
+  """
+  def get_post!(id), do: Repo.get!(Post, id)
+
+  @doc """
+  Gets a single post.
+
+  Returns nil if the Post does not exist.
+
+  ## Examples
+
       iex> get_post!(123)
       %Post{}
 
@@ -138,7 +179,6 @@ defmodule GraphqlMiniBlog.Blog do
       ** (Ecto.NoResultsError)
 
   """
-  def get_post!(id), do: Repo.get!(Post, id)
   def get_post(id), do: Repo.get(Post, id)
 
   @doc """

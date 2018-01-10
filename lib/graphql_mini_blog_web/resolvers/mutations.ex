@@ -22,7 +22,7 @@ defmodule GraphqlMiniBlogWeb.Resolvers.Mutations do
   end
 
   def delete_author(%{id: id}, _info) do
-    author = Repo.get!(Author, id)
-    Repo.delete(author)
+    Repo.get!(Author, id)
+    |> Repo.delete
   end
 end

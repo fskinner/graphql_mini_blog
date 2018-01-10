@@ -11,9 +11,12 @@ defmodule GraphqlMiniBlogWeb.PostView do
   end
 
   def render("post.json", %{post: post}) do
-    %{id: post.id,
+    %{
+      id: post.id,
       description: post.description,
       title: post.title,
-      about: post.about}
+      about: post.about,
+      author_id: post.author_id
+    }
   end
 end

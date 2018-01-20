@@ -4,13 +4,12 @@ defmodule GraphqlMiniBlog.Blog.Author do
   alias GraphqlMiniBlog.Blog.Author
   alias GraphqlMiniBlog.Blog.Post
 
-
   schema "authors" do
-    field :email, :string
-    field :first_name, :string
-    field :last_name, :string
+    field(:email, :string)
+    field(:first_name, :string)
+    field(:last_name, :string)
 
-    has_many :posts, Post
+    has_many(:posts, Post)
 
     timestamps()
   end
@@ -22,8 +21,8 @@ defmodule GraphqlMiniBlog.Blog.Author do
     |> validate_required([:email, :first_name, :last_name])
     |> validate_length(:first_name, min: 2)
     |> validate_length(:last_name, min: 2)
-    |> validate_length(:email, min: 5, max: 150)    
+    |> validate_length(:email, min: 5, max: 150)
     |> validate_format(:email, ~r/@/)
-    |> unique_constraint(:email, message: "Email already taken")  
+    |> unique_constraint(:email, message: "Email already taken")
   end
 end

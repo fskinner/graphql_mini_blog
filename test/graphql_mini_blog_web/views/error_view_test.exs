@@ -7,17 +7,14 @@ defmodule GraphqlMiniBlogWeb.ErrorViewTest do
   alias GraphqlMiniBlogWeb.ErrorView
 
   test "renders 404.json" do
-    assert render(ErrorView, "404.json", []) ==
-           %{errors: %{detail: "Resource not found"}}
+    assert render(ErrorView, "404.json", []) == %{errors: %{detail: "Resource not found"}}
   end
 
   test "render 500.json" do
-    assert render(ErrorView, "500.json", []) ==
-           %{errors: %{detail: "Internal server error"}}
+    assert render(ErrorView, "500.json", []) == %{errors: %{detail: "Internal server error"}}
   end
 
   test "render any other" do
-    assert render(ErrorView, "505.json", []) ==
-           %{errors: %{detail: "Internal server error"}}
+    assert render(ErrorView, "505.json", []) == %{errors: %{detail: "Internal server error"}}
   end
 end

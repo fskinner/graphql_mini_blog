@@ -10,6 +10,7 @@ defmodule GraphqlMiniBlogWeb.Resolvers.Mutations do
     case Blog.create_author(args) do
       {:ok, author} ->
         {:ok, author}
+
       {:error, _changeset} ->
         {:error, "could not create author"}
     end
@@ -18,11 +19,11 @@ defmodule GraphqlMiniBlogWeb.Resolvers.Mutations do
   def update_author(%{id: id, author: author_params}, _info) do
     Repo.get!(Author, id)
     |> Author.changeset(author_params)
-    |> Repo.update
+    |> Repo.update()
   end
 
   def delete_author(%{id: id}, _info) do
     Repo.get!(Author, id)
-    |> Repo.delete
+    |> Repo.delete()
   end
 end

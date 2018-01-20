@@ -4,7 +4,7 @@ defmodule GraphqlMiniBlogWeb.AuthorController do
   alias GraphqlMiniBlog.Blog
   alias GraphqlMiniBlog.Blog.Author
 
-  action_fallback GraphqlMiniBlogWeb.FallbackController
+  action_fallback(GraphqlMiniBlogWeb.FallbackController)
 
   def index(conn, _params) do
     authors = Blog.list_authors()
@@ -35,6 +35,7 @@ defmodule GraphqlMiniBlogWeb.AuthorController do
 
   def delete(conn, %{"id" => id}) do
     author = Blog.get_author!(id)
+
     with {:ok, %Author{}} <- Blog.delete_author(author) do
       send_resp(conn, :no_content, "")
     end

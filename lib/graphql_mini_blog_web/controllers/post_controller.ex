@@ -4,7 +4,7 @@ defmodule GraphqlMiniBlogWeb.PostController do
   alias GraphqlMiniBlog.Blog
   alias GraphqlMiniBlog.Blog.Post
 
-  action_fallback GraphqlMiniBlogWeb.FallbackController
+  action_fallback(GraphqlMiniBlogWeb.FallbackController)
 
   def index(conn, _params) do
     posts = Blog.list_posts()
@@ -35,6 +35,7 @@ defmodule GraphqlMiniBlogWeb.PostController do
 
   def delete(conn, %{"id" => id}) do
     post = Blog.get_post!(id)
+
     with {:ok, %Post{}} <- Blog.delete_post(post) do
       send_resp(conn, :no_content, "")
     end

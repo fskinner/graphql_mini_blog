@@ -28,8 +28,9 @@ defmodule GraphqlMiniBlogWeb do
 
   def view do
     quote do
-      use Phoenix.View, root: "lib/graphql_mini_blog_web/templates",
-                        namespace: GraphqlMiniBlogWeb
+      use Phoenix.View,
+        root: "lib/graphql_mini_blog_web/templates",
+        namespace: GraphqlMiniBlogWeb
 
       # Import convenience functions from controllers
       import Phoenix.Controller, only: [get_flash: 2, view_module: 1]

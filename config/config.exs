@@ -6,16 +6,14 @@
 use Mix.Config
 
 # General application configuration
-config :graphql_mini_blog,
-  ecto_repos: [GraphqlMiniBlog.Repo]
+config :graphql_mini_blog, ecto_repos: [GraphqlMiniBlog.Repo]
 
 # Configures the endpoint
 config :graphql_mini_blog, GraphqlMiniBlogWeb.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "jTpe+RWTsQbxsiyOj9f0hdgrsp4s3bQbOWVKCIFdKHVKq07df0l3j2ywCI+nwBit",
   render_errors: [view: GraphqlMiniBlogWeb.ErrorView, accepts: ~w(json)],
-  pubsub: [name: GraphqlMiniBlog.PubSub,
-           adapter: Phoenix.PubSub.PG2]
+  pubsub: [name: GraphqlMiniBlog.PubSub, adapter: Phoenix.PubSub.PG2]
 
 # Configures Elixir's Logger
 config :logger, :console,
@@ -24,4 +22,4 @@ config :logger, :console,
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
-import_config "#{Mix.env}.exs"
+import_config "#{Mix.env()}.exs"

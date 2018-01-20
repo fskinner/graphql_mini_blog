@@ -11,7 +11,7 @@ defmodule GraphqlMiniBlog.Application do
       # Start the Ecto repository
       supervisor(GraphqlMiniBlog.Repo, []),
       # Start the endpoint when the application starts
-      supervisor(GraphqlMiniBlogWeb.Endpoint, []),
+      supervisor(GraphqlMiniBlogWeb.Endpoint, [])
       # Start your own worker by calling: GraphqlMiniBlog.Worker.start_link(arg1, arg2, arg3)
       # worker(GraphqlMiniBlog.Worker, [arg1, arg2, arg3]),
     ]
